@@ -8,13 +8,16 @@
     <string name="large_text">Titel</string>
     <string name="load">laden</string>
     <string name="loaded">geladen</string>
-    <string name="loading_data">Daten werden geladen</string>
+    <string name="loading_data">Daten werden geladen …</string>
     <string name="navigation_drawer_close">Navigationsleiste schliessen</string>
     <string name="navigation_drawer_open">Navigationsleiste öffnen</string>
     <string name="next">Nächste</string>
     <string name="notes">Notizen</string>
     <string name="saved">gespeichert</string>
-    <string name="saving_data">Daten werden gespeichert</string>
+    <string name="saving_data">Daten werden gespeichert …</string>
     <string name="settings">Einstellungen</string>
+    <string name="next_song">Nächstes Lied</string>
+    <string name="previous_song">Voriges Lied</string>
+    <string name="title_activity_stage_view">Bühnenansicht</string>
 
 </resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">StageFever</string>
+    <string name="app_name" translatable="false">StageFever</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
@@ -14,8 +14,8 @@
     <string name="next">Next</string>
     <string name="previous">&lt;&lt;</string>
     <string name="import_scv">Import CSV</string>
-    <string name="saving_data">saving data ...</string>
-    <string name="loading_data">loading data ...</string>
+    <string name="saving_data">saving data …</string>
+    <string name="loading_data">loading data …</string>
     <string name="saved">saved</string>
     <string name="load">load</string>
     <string name="loaded">loaded</string>
