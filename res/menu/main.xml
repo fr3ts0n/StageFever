@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.fr3ts0n.stagefever.MainActivity" >
+
+    <item
+        android:id="@+id/import_csv"
+        android:icon="@drawable/ic_import_csv"
+        android:showAsAction="always"
+        android:title="@string/import_scv">
+    </item>
+
+</menu>

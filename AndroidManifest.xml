@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fr3ts0n.stagefever"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="22" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.Holo" >
+        <activity
+            android:name="com.fr3ts0n.stagefever.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+			<intent-filter
+				android:icon='@drawable/ic_launcher'
+				android:label='CSV SongList'>
+				<category android:name="android.intent.category.DEFAULT"/>
+			    <category android:name="android.intent.category.BROWSABLE"/>
+				<action android:name="android.intent.action.VIEW"/>
+				<data android:scheme="file" android:pathPattern=".*\\.csv" />
+				<data android:scheme="content" android:mimeType="text/*"/>
+			</intent-filter>
+            </activity>
+        <activity
+            android:name="com.fr3ts0n.stagefever.StageViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_stage_view"
+            android:parentActivityName="android.app.ListActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.app.ListActivity" />
+        </activity>
+    </application>
+
+</manifest>

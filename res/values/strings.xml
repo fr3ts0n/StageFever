@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">StageFever</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_stage_view">Stage View</string>
+    <string name="large_text">Title</string>
+    <string name="artist">Artist</string>
+    <string name="bpm">BPM</string>
+    <string name="notes">Notes</string>
+    <string name="settings">Settings</string>
+    <string name="next">Next</string>
+    <string name="previous">&lt;&lt;</string>
+    <string name="import_scv">Import CSV</string>
+    <string name="saving_data">saving data ...</string>
+    <string name="loading_data">loading data ...</string>
+    <string name="saved">saved</string>
+    <string name="load">load</string>
+    <string name="loaded">loaded</string>
+    <string name="back_again_to_exit">Press back again to close this app</string>
+    <string name="next_song">Next song</string>
+    <string name="previous_song">Previous song</string>
+
+</resources>

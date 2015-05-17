@@ -1,0 +1,20 @@
+<resources>
+
+    <string name="action_settings">Einstellungen</string>
+    <string name="artist">Interpret</string>
+    <string name="back_again_to_exit">Nochmal Zurück-Taste um zu schliessen</string>
+    <string name="bpm">BPM</string>
+    <string name="import_scv">CSV importieren</string>
+    <string name="large_text">Titel</string>
+    <string name="load">laden</string>
+    <string name="loaded">geladen</string>
+    <string name="loading_data">Daten werden geladen</string>
+    <string name="navigation_drawer_close">Navigationsleiste schliessen</string>
+    <string name="navigation_drawer_open">Navigationsleiste öffnen</string>
+    <string name="next">Nächste</string>
+    <string name="notes">Notizen</string>
+    <string name="saved">gespeichert</string>
+    <string name="saving_data">Daten werden gespeichert</string>
+    <string name="settings">Einstellungen</string>
+
+</resources>
