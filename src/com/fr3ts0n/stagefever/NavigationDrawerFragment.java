@@ -56,7 +56,6 @@ public class NavigationDrawerFragment extends Fragment
 	private ListView									mDrawerListView;
 	private View											mFragmentContainerView;
 
-	private int												mCurrentSelectedPosition	= 0;
 	private boolean										mFromSavedInstanceState;
 	private boolean										mUserLearnedDrawer;
 
@@ -78,13 +77,13 @@ public class NavigationDrawerFragment extends Fragment
 
 		if (savedInstanceState != null)
 		{
-			mCurrentSelectedPosition = savedInstanceState
+			SongAdapter.position = savedInstanceState
 					.getInt(STATE_SELECTED_POSITION);
 			mFromSavedInstanceState = true;
 		}
 
 		// Select either the default item (0) or the last selected item.
-		selectItem(mCurrentSelectedPosition);
+		selectItem(SongAdapter.position);
 	}
 
 	@Override
@@ -112,7 +111,7 @@ public class NavigationDrawerFragment extends Fragment
 						selectItem(position);
 					}
 				});
-		mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+		mDrawerListView.setItemChecked(SongAdapter.position, true);
 		return mDrawerListView;
 	}
 
@@ -226,7 +225,7 @@ public class NavigationDrawerFragment extends Fragment
 
 	private void selectItem(int position)
 	{
-		mCurrentSelectedPosition = position;
+		SongAdapter.position = position;
 		if (mDrawerListView != null)
 		{
 			mDrawerListView.setItemChecked(position, true);
@@ -266,7 +265,7 @@ public class NavigationDrawerFragment extends Fragment
 	public void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
-		outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
+		outState.putInt(STATE_SELECTED_POSITION, SongAdapter.position);
 	}
 
 	@Override

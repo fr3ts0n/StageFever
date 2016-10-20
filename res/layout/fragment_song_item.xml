@@ -65,14 +65,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/large_text"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
             <TextView
                 android:id="@+id/artist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/artist"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Small" />
 
         </LinearLayout>
 
@@ -81,7 +81,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/settings"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium" />
 
     </LinearLayout>
 
@@ -89,15 +89,18 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        >
 
         <TextView
             android:id="@+id/notes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/notes"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="@android:dimen/notification_large_icon_height" />
+            android:typeface="monospace"
+            android:textSize="30sp"
+            android:textStyle="normal|bold"
+            android:textColor="?android:attr/textColorPrimary"/>
 
     </ScrollView>
 

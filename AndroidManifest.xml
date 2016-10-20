@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fr3ts0n.stagefever"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="010001"
+    android:versionName="1.0.1" >
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -33,16 +33,6 @@
 				<data android:scheme="content" android:mimeType="text/*"/>
 			</intent-filter>
             </activity>
-        <activity
-            android:name="com.fr3ts0n.stagefever.StageViewActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_stage_view"
-            android:parentActivityName="android.app.ListActivity"
-            android:theme="@style/FullscreenTheme" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="android.app.ListActivity" />
-        </activity>
     </application>
 
 </manifest>

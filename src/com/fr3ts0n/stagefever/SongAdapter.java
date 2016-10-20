@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 
 public class SongAdapter extends ArrayAdapter<Song>
 {
+	static int position = 0;
 
 	public SongAdapter(Context context, int resource, int textViewResourceId,
 			List<Song> objects)
@@ -21,8 +22,8 @@ public class SongAdapter extends ArrayAdapter<Song>
 	/**
 	 * Import model data from CSV file
 	 *
-	 * @param fileName
-	 *          name of CSV file
+	 * @param inStr
+	 *          input stream of CSV file
 	 * @param fieldDelimiter
 	 *          delimiter sequence between data items
 	 */

@@ -28,7 +28,6 @@ public class SongItemFragment extends Fragment
 	public static final int MSG_BPM_TICK = 1;
 
 	private SongAdapter songs;
-	private int position;
 
 	private View thisView;
 	private TextView tvDescr;
@@ -55,7 +54,7 @@ public class SongItemFragment extends Fragment
 			Message msg = mHandler.obtainMessage(MSG_BPM_TICK);
 			mHandler.sendMessage(msg);
 		}
-	};
+	}
 
 	/**
 	 * Handle message requests
@@ -95,7 +94,7 @@ public class SongItemFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				setPosition(position+1);
+				setPosition(SongAdapter.position+1);
 			}
 		});
 
@@ -104,7 +103,7 @@ public class SongItemFragment extends Fragment
 			@Override
 			public void onClick(View v)
 			{
-				setPosition(position-1);
+				setPosition(SongAdapter.position-1);
 			}
 		});
 
@@ -126,25 +125,25 @@ public class SongItemFragment extends Fragment
 
 	/**
 	 * Update all display data fields
-	 *
-	 * @param nextSong
-	 *          next song to be shown
 	 */
 	private void updateFields()
 	{
 		if( thisView != null && songs != null && songs.getCount() > 0 )
 		{
-			Song song = songs.getItem(position);
+			Song song = songs.getItem(SongAdapter.position);
 
-			tvDescr.setText(song.title);
-			tvArtist.setText(song.artist);
-			tvSettings.setText(song.settings);
-			tvNotes.setText(song.notes);
-			btnNext.setText(position < songs.getCount()-1 ? songs.getItem(position + 1).title : "-");
+			if (song != null)
+			{
+				tvDescr.setText(song.title);
+				tvArtist.setText(song.artist);
+				tvSettings.setText(song.settings);
+				tvNotes.setText(song.notes);
+				setBpm(song.bpm);
+			}
+			btnNext.setText(SongAdapter.position < songs.getCount()-1 ? songs.getItem(SongAdapter.position + 1).title : "-");
 			progBar.setMax(songs.getCount());
-			progBar.setProgress(position+1);
+			progBar.setProgress(SongAdapter.position+1);
 
-			setBpm(song.bpm);
 		}
 	}
 
@@ -174,25 +173,25 @@ public class SongItemFragment extends Fragment
 	 */
 	public Song getSong()
 	{
-		return songs.getItem(position);
+		return songs.getItem(SongAdapter.position);
 	}
 
 	/**
-	 * @param song
-	 *          the song to set
+	 * @param songs
+	 *          the song adapter to set
 	 */
 	public void setSongs(SongAdapter songs)
 	{
 		this.songs = songs;
-		setPosition(position);
+		setPosition(SongAdapter.position);
 	}
 
 	/**
-	 * @return the position
+	 * @return the SongAdapter.position
 	 */
 	public int getPosition()
 	{
-		return position;
+		return SongAdapter.position;
 	}
 
 	/**
@@ -200,7 +199,7 @@ public class SongItemFragment extends Fragment
 	 */
 	public void setPosition(int position)
 	{
-		this.position =
+		SongAdapter.position =
 				songs != null
 				 ? java.lang.Math.max( java.lang.Math.min(position, songs.getCount()-1), 0)
 			   : 0;
