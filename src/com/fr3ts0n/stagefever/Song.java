@@ -1,12 +1,16 @@
 package com.fr3ts0n.stagefever;
 
+import android.util.Log;
+
+import java.util.Arrays;
+
 public class Song
 {
-	public String title = "";
-	public String artist = "";
-	public String settings = "";
-	public String notes = "";
-	public int bpm = 0;
+	String title = "";
+	String artist = "";
+	String settings = "";
+	String notes = "";
+	int bpm = 0;
 
 	/**
 	 * construct Song from array of elements
@@ -16,19 +20,24 @@ public class Song
 	 */
 	public Song(String[] elements)
 	{
-		if (elements.length >= 5)
+		try
 		{
 			title  = elements[0];
 			artist = elements[1];
 			settings = elements[2];
-			notes = elements[4];
 			try
 			{
-				bpm = Integer.valueOf(elements[3]).intValue();
-			} catch (NumberFormatException ex)
+				bpm = Integer.valueOf(elements[3]);
+			}
+			catch (NumberFormatException ex)
 			{
 				bpm = 0;
 			}
+			notes = elements[4];
+		}
+		catch(Exception ex)
+		{
+			Log.e(getClass().getName(), ex.getMessage() + Arrays.toString(elements));
 		}
 	}
 
@@ -36,12 +45,11 @@ public class Song
 	 * get elements as array of strings
 	 * in following order of fields:
 	 * { title, artist, settings, String.valueOf(bpm), notes }
-	 * @return
+	 * @return array of elements
 	 */
 	public String[] getElements()
 	{
-		String[] result = { title, artist, settings, String.valueOf(bpm), notes };
-		return result;
+		return new String[]{ title, artist, settings, String.valueOf(bpm), notes };
 	}
 
 	@Override
