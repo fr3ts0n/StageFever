@@ -9,6 +9,10 @@ import java.util.List;
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+
 public class SongAdapter extends ArrayAdapter<Song>
 {
 	static int position = 0;
@@ -29,19 +33,15 @@ public class SongAdapter extends ArrayAdapter<Song>
 	 */
 	public void importFromCsvFile(InputStream inStr, String fieldDelimiter)
 	{
-		String line;
-		String[] elements;
 		BufferedReader rdr;
 		// clear song list
 		clear();
 		try
 		{
 			rdr = new BufferedReader(new InputStreamReader(inStr));
-
-			while ((line = rdr.readLine()) != null)
+			for(CSVRecord record : CSVFormat.newFormat(fieldDelimiter.charAt(0)).parse(rdr))
 			{
-				elements = line.split(fieldDelimiter);
-				add(new Song(elements));
+				add(new Song(record));
 			}
 			rdr.close();
 		} catch (IOException e)
