@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fr3ts0n.stagefever"
-    android:versionCode="010002"
-    android:versionName="1.0.2" >
+    android:versionCode="010003"
+    android:versionName="1.0.3" >
 
     <uses-sdk
         android:minSdkVersion="15"
