@@ -14,6 +14,18 @@ public class Song {
     int bpm = 0;
 
     /**
+     * CSV field ids
+     */
+    public enum FID
+    {
+        TITLE,
+        ARTIST,
+        SETTINGS,
+        BPM,
+        NOTES
+    }
+
+    /**
      * construct Song from array of elements
      *
      * @param elements array of elements
@@ -24,18 +36,18 @@ public class Song {
     {
         try
         {
-            title = elements[0];
-            artist = elements[1];
-            settings = elements[2];
+            title = elements[FID.TITLE.ordinal()];
+            artist = elements[FID.ARTIST.ordinal()];
+            settings = elements[FID.SETTINGS.ordinal()];
             try
             {
-                bpm = Integer.valueOf(elements[3]);
+                bpm = Integer.valueOf(elements[FID.BPM.ordinal()]);
             }
             catch (NumberFormatException ex)
             {
                 bpm = 0;
             }
-            notes = elements[4];
+            notes = elements[FID.NOTES.ordinal()];
         }
         catch (Exception ex)
         {
@@ -43,22 +55,26 @@ public class Song {
         }
     }
 
+    /**
+     * Construct song from a CSV record
+     * @param record CSV data record
+     */
     public Song(CSVRecord record)
     {
         try
         {
-            title = record.get(0);
-            artist = record.get(1);
-            settings = record.get(2);
+            title = record.get(FID.TITLE.ordinal());
+            artist = record.get(FID.ARTIST.ordinal());
+            settings = record.get(FID.SETTINGS.ordinal());
             try
             {
-                bpm = Integer.valueOf(record.get(3));
+                bpm = Integer.valueOf(record.get(FID.BPM.ordinal()));
             }
             catch (NumberFormatException ex)
             {
                 bpm = 0;
             }
-            notes = record.get(4);
+            notes = record.get(FID.NOTES.ordinal());
         }
         catch (Exception ex)
         {

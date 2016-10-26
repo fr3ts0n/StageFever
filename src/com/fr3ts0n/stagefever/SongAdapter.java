@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.csv.QuoteMode;
 
 public class SongAdapter extends ArrayAdapter<Song>
 {
@@ -39,7 +40,9 @@ public class SongAdapter extends ArrayAdapter<Song>
 		try
 		{
 			rdr = new BufferedReader(new InputStreamReader(inStr));
-			for(CSVRecord record : CSVFormat.newFormat(fieldDelimiter.charAt(0)).parse(rdr))
+			for(CSVRecord record : CSVFormat.newFormat(fieldDelimiter.charAt(0))
+					                           .withQuote('"')
+					                           .withQuoteMode(QuoteMode.MINIMAL).parse(rdr))
 			{
 				add(new Song(record));
 			}
