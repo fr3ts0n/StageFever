@@ -17,5 +17,7 @@
     <string name="settings">Einstellungen</string>
     <string name="next_song">Nächstes Lied</string>
     <string name="previous_song">Voriges Lied</string>
+    <string name="font_size_description">Schriftgrösse in dp</string>
+    <string name="font_size_notes">Schriftgrösse der Notizen [dp]</string>
 
 </resources>

@@ -7,9 +7,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,15 +31,15 @@ public class SongItemFragment extends Fragment
 
 	private SongAdapter songs;
 
-	private View thisView;
-	private TextView tvDescr;
-	private TextView tvArtist;
-	private TextView tvSettings;
-	private TextView tvNotes;
-	private ToggleButton btnBpm;
-	private Button btnNext;
-	private Button btnPrev;
-	private ProgressBar progBar;
+	View thisView;
+	TextView tvDescr;
+	TextView tvArtist;
+	TextView tvSettings;
+	TextView tvNotes;
+	ToggleButton btnBpm;
+	Button btnNext;
+	Button btnPrev;
+	ProgressBar progBar;
 
 	/** Timer for display updates */
 	private static Timer updateTimer = new Timer(true);
@@ -117,6 +119,10 @@ public class SongItemFragment extends Fragment
 				btnBpm.setChecked(false);
 			}
 		});
+		// get preferences
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+		// set font size based on preferences
+		tvNotes.setTextSize(Float.valueOf(prefs.getString(MainActivity.SETTINGS_FONT_SIZE, "30")));
 
 		updateFields();
 

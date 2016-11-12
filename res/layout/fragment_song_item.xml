@@ -96,7 +96,6 @@
             android:layout_height="wrap_content"
             android:text="@string/notes"
             android:typeface="monospace"
-            android:textSize="30sp"
             android:textStyle="normal|bold"
             android:textColor="?android:attr/textColorPrimary"/>
 

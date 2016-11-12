@@ -10,20 +10,33 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity
-		implements NavigationDrawerFragment.NavigationDrawerCallbacks
+		implements
+		NavigationDrawerFragment.NavigationDrawerCallbacks,
+		SharedPreferences.OnSharedPreferenceChangeListener
 {
 	// activity request responses
-	private static final int REQUEST_SELECT_FILE = 1;
+	static final int REQUEST_SELECT_FILE = 1;
+	static final int REQUEST_SETTINGS = 2;
+
+	static final String SETTINGS_FONT_SIZE = "font_size_notes";
+
+	/**
+	 * app preferences ...
+	 */
+	static SharedPreferences prefs;
 	/** Timeout for exiting via BACK key */
 	private static final int EXIT_TIMEOUT = 2500;
 	/** last time of back key pressed */
@@ -86,6 +99,13 @@ public class MainActivity extends Activity
 
 		songItemFragment.setSongs(songs);
 		mNavigationDrawerFragment.setAdapter(songs);
+
+		// get preferences
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		// register for later changes
+		prefs.registerOnSharedPreferenceChangeListener(this);
+		// set values from shared preferences
+		onSharedPreferenceChanged(prefs, null);
 	}
 
 	@Override
@@ -137,6 +157,9 @@ public class MainActivity extends Activity
 				break;
 
 			case R.id.action_settings:
+				// Launch the BtDeviceListActivity to see devices and do scan
+				Intent settingsIntent = new Intent(this, SettingsActivity.class);
+				startActivityForResult(settingsIntent, REQUEST_SETTINGS);
 				return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -208,4 +231,18 @@ public class MainActivity extends Activity
 				super.onBackPressed();
 			}
 		}
+
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
+	{
+		// Font size of notes?
+		if (key==null || SETTINGS_FONT_SIZE.equals(key))
+		{
+            if(songItemFragment.tvNotes != null)
+            {
+                songItemFragment.tvNotes.setTextSize(
+                        Float.valueOf(sharedPreferences.getString(SETTINGS_FONT_SIZE, "30")));
+            }
+		}
+	}
 }
