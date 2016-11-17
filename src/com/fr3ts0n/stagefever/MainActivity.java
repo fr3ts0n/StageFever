@@ -1,42 +1,31 @@
 package com.fr3ts0n.stagefever;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainActivity extends Activity
 		implements
-		NavigationDrawerFragment.NavigationDrawerCallbacks,
-		SharedPreferences.OnSharedPreferenceChangeListener
+		NavigationDrawerFragment.NavigationDrawerCallbacks
 {
 	// activity request responses
 	static final int REQUEST_SELECT_FILE = 1;
 	static final int REQUEST_SETTINGS = 2;
 
-	static final String SETTINGS_FONT_SIZE = "font_size_notes";
-
-	/**
-	 * app preferences ...
-	 */
-	static SharedPreferences prefs;
 	/** Timeout for exiting via BACK key */
 	private static final int EXIT_TIMEOUT = 2500;
 	/** last time of back key pressed */
@@ -99,13 +88,6 @@ public class MainActivity extends Activity
 
 		songItemFragment.setSongs(songs);
 		mNavigationDrawerFragment.setAdapter(songs);
-
-		// get preferences
-		prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		// register for later changes
-		prefs.registerOnSharedPreferenceChangeListener(this);
-		// set values from shared preferences
-		onSharedPreferenceChanged(prefs, null);
 	}
 
 	@Override
@@ -217,32 +199,18 @@ public class MainActivity extends Activity
 	@Override
 	public void onBackPressed()
 	{
-			if (lastBackPressTime < System.currentTimeMillis() - EXIT_TIMEOUT)
-			{
-				exitToast = Toast.makeText(this, R.string.back_again_to_exit, Toast.LENGTH_SHORT);
-				exitToast.show();
-				lastBackPressTime = System.currentTimeMillis();
-			} else
-			{
-				if (exitToast != null)
-				{
-					exitToast.cancel();
-				}
-				super.onBackPressed();
-			}
-		}
-
-	@Override
-	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
-	{
-		// Font size of notes?
-		if (key==null || SETTINGS_FONT_SIZE.equals(key))
+		if (lastBackPressTime < System.currentTimeMillis() - EXIT_TIMEOUT)
 		{
-            if(songItemFragment.tvNotes != null)
-            {
-                songItemFragment.tvNotes.setTextSize(
-                        Float.valueOf(sharedPreferences.getString(SETTINGS_FONT_SIZE, "30")));
-            }
+			exitToast = Toast.makeText(this, R.string.back_again_to_exit, Toast.LENGTH_SHORT);
+			exitToast.show();
+			lastBackPressTime = System.currentTimeMillis();
+		} else
+		{
+			if (exitToast != null)
+			{
+				exitToast.cancel();
+			}
+			super.onBackPressed();
 		}
 	}
 }

@@ -22,5 +22,7 @@
     <string name="previous_song">Previous song</string>
     <string name="font_size_notes">Font size of notes [dp]</string>
     <string name="font_size_description">Font size in dp</string>
+    <string name="metronome_visible">Metronome visible</string>
+    <string name="metronome_description">show / hide metronome on bottom of screen</string>
 
 </resources>

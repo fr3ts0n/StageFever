@@ -3,9 +3,6 @@
  */
 package com.fr3ts0n.stagefever;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -21,13 +18,23 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * @author erwin
  *
  */
-public class SongItemFragment extends Fragment
+public class SongItemFragment
+        extends Fragment
+        implements SharedPreferences.OnSharedPreferenceChangeListener
 {
 	public static final int MSG_BPM_TICK = 1;
+    public static final int MAX_NUMBER_BEATS = 2;
+
+    /** settings strings */
+    static final String SETTINGS_FONT_SIZE = "font_size_notes";
+    static final String SETTINGS_METRONOME_VISIBLE = "metronome_visible";
 
 	private SongAdapter songs;
 
@@ -40,9 +47,13 @@ public class SongItemFragment extends Fragment
 	Button btnNext;
 	Button btnPrev;
 	ProgressBar progBar;
+	Button[] metronome;
+    View loMetronome;
 
 	/** Timer for display updates */
 	private static Timer updateTimer = new Timer(true);
+
+	private int beat = 0;
 
 	/**
 	 * Timer Task to cyclically update data screen
@@ -71,10 +82,48 @@ public class SongItemFragment extends Fragment
 			{
 				case MSG_BPM_TICK:
 					btnBpm.toggle();
+                    updateMetronome(btnBpm.isChecked());
 					break;
 			}
 		}
 	};
+
+    /**
+     * Update display of metronome
+     */
+    void updateMetronome(boolean isActive)
+    {
+        if(isActive)
+        {
+            // set all lights of metronome
+            for(int i=0; i<MAX_NUMBER_BEATS; i++)
+            {
+                metronome[i].setPressed(i==beat);
+            }
+        }
+        else
+        {
+            // increase count to next beat
+            beat++;
+            // if beat is max, restart with 0
+            beat %= MAX_NUMBER_BEATS;
+        }
+    }
+
+    /**
+     * set all segments of metronome display to specified state
+     * @param state state to be set
+     */
+    void setAllMetronomeSegments(boolean state)
+    {
+        // set all lights of metronome
+        for(int i=0; i<MAX_NUMBER_BEATS; i++)
+        {
+            metronome[i].setPressed(state);
+        }
+        // reset beat number
+        beat=0;
+    }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,6 +139,12 @@ public class SongItemFragment extends Fragment
 		btnPrev = (Button) thisView.findViewById(R.id.previous);
 		btnNext = (Button) thisView.findViewById(R.id.next);
 		progBar = (ProgressBar) thisView.findViewById(R.id.progressBar1);
+
+        loMetronome = thisView.findViewById(R.id.metronome);
+        metronome = new Button[]{
+				(Button) thisView.findViewById(R.id.metronome0),
+				(Button) thisView.findViewById(R.id.metronome1)
+		};
 
 		btnNext.setOnClickListener(new OnClickListener()
 		{
@@ -117,14 +172,15 @@ public class SongItemFragment extends Fragment
 				// cleanup from last updates
 				updateTimer.cancel();
 				btnBpm.setChecked(false);
+                setAllMetronomeSegments(false);
 			}
 		});
 		// get preferences
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-		// set font size based on preferences
-		tvNotes.setTextSize(Float.valueOf(prefs.getString(MainActivity.SETTINGS_FONT_SIZE, "30")));
-
-		updateFields();
+        // register for later changes
+        prefs.registerOnSharedPreferenceChangeListener(this);
+        // set values from shared preferences
+        onSharedPreferenceChanged(prefs, null);
 
 		return thisView;
 	}
@@ -149,7 +205,6 @@ public class SongItemFragment extends Fragment
 			btnNext.setText(SongAdapter.position < songs.getCount()-1 ? songs.getItem(SongAdapter.position + 1).title : "-");
 			progBar.setMax(songs.getCount());
 			progBar.setProgress(SongAdapter.position+1);
-
 		}
 	}
 
@@ -163,6 +218,8 @@ public class SongItemFragment extends Fragment
 		// cleanup from last updates
 		updateTimer.cancel();
 		btnBpm.setChecked(false);
+        setAllMetronomeSegments(false);
+
 		// set new BPM values
 		btnBpm.setText(String.valueOf(newBpmRate));
 		btnBpm.setTextOn(String.valueOf(newBpmRate));
@@ -212,4 +269,21 @@ public class SongItemFragment extends Fragment
 		updateFields();
 	}
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key)
+    {
+        // Font size of notes?
+        if (key==null || SETTINGS_FONT_SIZE.equals(key))
+        {
+            tvNotes.setTextSize(
+                    Float.valueOf(sharedPreferences.getString(SETTINGS_FONT_SIZE, "30")));
+        }
+
+        // Metronome visible?
+        if (key==null || SETTINGS_METRONOME_VISIBLE.equals(key)) {
+            loMetronome.setVisibility(
+                    sharedPreferences.getBoolean(SETTINGS_METRONOME_VISIBLE, false)
+                            ? View.VISIBLE : View.GONE);
+        }
+    }
 }

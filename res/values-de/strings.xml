@@ -19,5 +19,7 @@
     <string name="previous_song">Voriges Lied</string>
     <string name="font_size_description">Schriftgrösse in dp</string>
     <string name="font_size_notes">Schriftgrösse der Notizen [dp]</string>
+    <string name="metronome_visible">Metronom sichtbar</string>
+    <string name="metronome_description">Metronom am unteren Bildschirmrand anzeigen / verstecken</string>
 
 </resources>

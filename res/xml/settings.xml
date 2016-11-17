@@ -29,4 +29,10 @@
         android:inputType="numberDecimal"
         android:summary="@string/font_size_description" />
 
+    <SwitchPreference
+        android:defaultValue="false"
+        android:title="@string/metronome_visible"
+        android:summary="@string/metronome_description"
+        android:key="metronome_visible" />
+
 </PreferenceScreen>

@@ -87,7 +87,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="20"
         >
 
         <TextView
@@ -100,5 +100,27 @@
             android:textColor="?android:attr/textColorPrimary"/>
 
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/metronome"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:text=""
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/metronome0"
+            android:layout_weight="1" />
+
+        <Button
+            android:text=""
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/metronome1"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </LinearLayout>
