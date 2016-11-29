@@ -177,11 +177,13 @@ public class SongItemFragment
 		});
 		// get preferences
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+		// register for notification of later preference changes
+		prefs.registerOnSharedPreferenceChangeListener(this);
 		// set values from shared preferences
 		onSharedPreferenceChanged(prefs, null);
-        // register for notification of later preference changes
-        prefs.registerOnSharedPreferenceChangeListener(this);
-
+		// set start position
+		setPosition(SongAdapter.position);
+		// return view
 		return thisView;
 	}
 
