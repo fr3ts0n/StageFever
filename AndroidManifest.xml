@@ -37,6 +37,7 @@
         android:theme="@android:style/Theme.Holo" >
         <activity
             android:name="com.fr3ts0n.stagefever.MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

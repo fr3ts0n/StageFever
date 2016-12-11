@@ -213,7 +213,7 @@ public class SongItemFragment
 	/**
 	 * Set BPM rate for display toggle
 	 *
-	 * @param newBpmRate
+	 * @param newBpmRate new BPM rate
 	 */
 	public void setBpm(long newBpmRate)
 	{

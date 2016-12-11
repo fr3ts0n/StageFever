@@ -1,18 +1,17 @@
 package com.fr3ts0n.stagefever;
 
+import android.content.Context;
+import android.widget.ArrayAdapter;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.csv.QuoteMode;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
-
-import android.content.Context;
-import android.widget.ArrayAdapter;
-
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
-import org.apache.commons.csv.QuoteMode;
 
 public class SongAdapter extends ArrayAdapter<Song>
 {
