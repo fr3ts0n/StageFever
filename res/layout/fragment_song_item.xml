@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/bpm"
-            android:text="@string/bpm" style="@style/AppTheme"/>
+            android:text="@string/bpm" />
 
         <Button
             android:id="@+id/previous"
@@ -27,7 +27,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:hint="@string/previous_song"
-            android:text="@string/previous" style="@style/AppTheme"/>
+            android:text="@string/previous" />
 
         <Button
             android:id="@+id/next"
@@ -37,7 +37,7 @@
             android:layout_weight="3"
             android:gravity="center"
             android:hint="@string/next_song"
-            android:text="@string/next" style="@style/AppTheme"/>
+            android:text="@string/next" />
 
     </LinearLayout>
 
