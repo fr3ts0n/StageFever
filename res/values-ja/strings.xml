@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="navigation_drawer_open">ナビゲーションドロワーを開く</string>
+    <string name="navigation_drawer_close">ナビゲーションドロワーを閉じる</string>
+    <string name="action_settings">設定</string>
+    <string name="large_text">タイトル</string>
+    <string name="artist">アーティスト</string>
+    <string name="bpm">BPM</string>
+    <string name="notes">ノート</string>
+    <string name="settings">設定</string>
+    <string name="next">次へ</string>
+    <string name="import_scv">CSV のインポート</string>
+    <string name="saving_data">データの保存中 …</string>
+    <string name="saved">保存しました</string>
+    <string name="load">ロード</string>
+    <string name="loaded">ロードしました</string>
+    <string name="back_again_to_exit">もう一度戻るを押すとアプリを終了します</string>
+    <string name="next_song">次の曲</string>
+    <string name="previous_song">前の曲</string>
+    <string name="font_size_notes">ノートのフォントサイズ [dp]</string>
+    <string name="font_size_description">フォントサイズ dp で</string>
+    <string name="metronome_visible">メトロノームの表示</string>
+    <string name="metronome_description">画面の下にメトロノームを表示 / 非表示します</string>
+
+</resources>
