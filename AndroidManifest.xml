@@ -19,8 +19,8 @@
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fr3ts0n.stagefever"
-    android:versionCode="010008"
-    android:versionName="1.0.8">
+    android:versionCode="010009"
+    android:versionName="1.0.9">
 
     <uses-sdk
         android:minSdkVersion="15"
