@@ -19,8 +19,8 @@
   -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fr3ts0n.stagefever"
-    android:versionCode="010009"
-    android:versionName="1.0.9">
+    android:versionCode="010010"
+    android:versionName="1.0.10">
 
     <uses-sdk
         android:minSdkVersion="15"
@@ -62,7 +62,9 @@
 				<data android:scheme="content" android:mimeType="text/*"/>
 			</intent-filter>
             </activity>
-        <activity android:name=".SettingsActivity"/>
+        <activity android:name=".SettingsActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize"
+            />
     </application>
 
 </manifest>
