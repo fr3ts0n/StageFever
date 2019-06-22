@@ -1,4 +1,6 @@
 bin
 gen
 local.properties
+.idea
+.gradle
 
