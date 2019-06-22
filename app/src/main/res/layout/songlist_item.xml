@@ -5,5 +5,5 @@
                  android:layout_height="wrap_content"
                  android:background="?android:attr/listChoiceBackgroundIndicator"
                  android:gravity="center_vertical"
-                 android:textAppearance="@android:style/TextAppearance.Small"
-    />
+                 android:textColor="@android:color/primary_text_dark"
+                 android:textSize="24sp"/>

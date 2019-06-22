@@ -5,9 +5,11 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.content.FileProvider;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -51,7 +53,7 @@ public class MainActivity extends Activity
 	/**
 	 * song display handler
 	 */
-	static final SongItemFragment songItemFragment = new SongItemFragment();
+	final SongItemFragment songItemFragment = new SongItemFragment();
 
 	/**
 	 * Song data adapter
@@ -94,7 +96,7 @@ public class MainActivity extends Activity
 			R.id.navigation_drawer,
 			(DrawerLayout) findViewById(R.id.drawer_layout)
 		                               );
-
+		
 		// initialize song data
 		if (songs == null)
 		{
@@ -104,17 +106,31 @@ public class MainActivity extends Activity
 				                       0,
 				                       new ArrayList<Song>()
 			);
-			try
+		}
+
+		// Try to load inital / specified CSV data
+		try
+		{
+			Intent intent = getIntent();
+			Uri uri = intent.getData();
+			
+			switch (intent.getAction())
 			{
-				songs.importFromCsvFile(
-					getApplicationContext().getAssets().open("SetList.csv"),
-					";"
-				                       );
+				// CSV is specified by intent ...
+				case Intent.ACTION_EDIT:
+				case Intent.ACTION_VIEW:
+					SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+					songs.importFromCsvFile( getContentResolver().openInputStream(uri),	prefs.getString("csv_field_delimiter", ";"));
+					break;
+				
+				// CSV unspecified, load internal demo data ...
+				default:
+					songs.importFromCsvFile(getApplicationContext().getAssets().open("SetList.csv"), ";");
 			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
 		}
 
 		songItemFragment.setSongs(songs);
@@ -209,13 +225,15 @@ public class MainActivity extends Activity
 			case REQUEST_SELECT_FILE:
 				if (resultCode == RESULT_OK)
 				{
+					SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 					// Get the Uri of the selected file
 					Uri uri = data.getData();
 					Log.d("CSV import", "Load content: " + uri);
 					// load data ...
 					try
 					{
-						songs.importFromCsvFile(getContentResolver().openInputStream(uri), ";");
+						songs.importFromCsvFile( getContentResolver().openInputStream(uri),
+							                     prefs.getString("csv_field_delimiter", ";"));
 					}
 					catch (FileNotFoundException e)
 					{

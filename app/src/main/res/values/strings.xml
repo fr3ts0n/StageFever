@@ -24,5 +24,9 @@
     <string name="font_size_description">Font size in dp</string>
     <string name="metronome_visible">Metronome visible</string>
     <string name="metronome_description">show / hide metronome on bottom of screen</string>
+    <string name="csv_import">CSV import</string>
+    <string name="display">Display</string>
+    <string name="csv_field_delimiter_sum">Delimiter char between CSV fields</string>
+    <string name="csv_field_delimiter">CSV field delimiter</string>
 
 </resources>

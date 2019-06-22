@@ -21,5 +21,7 @@
     <string name="font_size_notes">Schriftgrösse der Notizen [dp]</string>
     <string name="metronome_visible">Metronom sichtbar</string>
     <string name="metronome_description">Metronom am unteren Bildschirmrand anzeigen / verstecken</string>
+    <string name="csv_import">CSV Import</string>
+    <string name="display">Anzeige</string>
 
 </resources>

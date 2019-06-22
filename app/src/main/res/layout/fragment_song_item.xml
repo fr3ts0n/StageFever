@@ -94,10 +94,11 @@
             android:id="@+id/notes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|fill"
             android:text="@string/notes"
-            android:typeface="monospace"
+            android:textColor="?android:attr/textColorPrimary"
             android:textStyle="normal|bold"
-            android:textColor="?android:attr/textColorPrimary"/>
+            android:typeface="monospace"/>
 
     </ScrollView>
 
@@ -111,7 +112,7 @@
         <Button
             android:text=""
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/metronome0"
             android:enabled="false"
             android:layout_weight="1"
@@ -120,7 +121,7 @@
         <Button
             android:text=""
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/metronome1"
             android:enabled="false"
             android:layout_weight="1"

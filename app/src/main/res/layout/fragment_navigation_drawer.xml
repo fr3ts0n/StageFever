@@ -3,5 +3,5 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:choiceMode="singleChoice"
-          tools:context="com.fr3ts0n.stagefever.NavigationDrawerFragment"
-    />
+          android:dividerHeight="10sp"
+          tools:context="com.fr3ts0n.stagefever.NavigationDrawerFragment"/>

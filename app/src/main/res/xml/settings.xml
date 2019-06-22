@@ -20,19 +20,32 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <EditTextPreference
-        android:key="font_size_notes"
-        android:defaultValue="24"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:title="@string/font_size_notes"
-        android:inputType="numberDecimal"
-        android:summary="@string/font_size_description" />
+    <PreferenceCategory
+        android:title="@string/display">
 
-    <SwitchPreference
-        android:defaultValue="false"
-        android:title="@string/metronome_visible"
-        android:summary="@string/metronome_description"
-        android:key="metronome_visible" />
+        <EditTextPreference
+            android:defaultValue="24"
+            android:inputType="numberDecimal"
+            android:key="font_size_notes"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:summary="@string/font_size_description"
+            android:title="@string/font_size_notes"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="metronome_visible"
+            android:summary="@string/metronome_description"
+            android:title="@string/metronome_visible"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/csv_import">
+
+        <ListPreference
+            android:entries="@array/csv_field_delimiter"
+            android:entryValues="@array/csv_field_delimiter_val"
+            android:key="csv_field_delimiter"
+            android:summary="@string/csv_field_delimiter_sum"
+            android:title="@string/csv_field_delimiter"/>
+    </PreferenceCategory>
 
 </PreferenceScreen>

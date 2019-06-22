@@ -3,6 +3,7 @@
  */
 package com.fr3ts0n.stagefever;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -125,6 +126,7 @@ public class SongItemFragment
         beat=0;
     }
 
+	@SuppressLint("ClickableViewAccessibility")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
@@ -183,6 +185,24 @@ public class SongItemFragment
 		onSharedPreferenceChanged(prefs, null);
 		// set start position
 		setPosition(SongAdapter.position);
+		
+		OnSwipeTouchListener swipeListener =
+			new OnSwipeTouchListener(getActivity())
+			{
+				public void onSwipeRight()
+				{
+					setPosition(SongAdapter.position-1);
+				}
+	
+				public void onSwipeLeft()
+				{
+					setPosition(SongAdapter.position+1);
+				}
+			};
+		
+		thisView.setOnTouchListener(swipeListener);
+		tvNotes.setOnTouchListener(swipeListener);
+		
 		// return view
 		return thisView;
 	}
@@ -277,8 +297,9 @@ public class SongItemFragment
         // Font size of notes?
         if (key==null || SETTINGS_FONT_SIZE.equals(key))
         {
-            tvNotes.setTextSize(
-                    Float.valueOf(sharedPreferences.getString(SETTINGS_FONT_SIZE, "30")));
+        	Float fontSize = Float.valueOf(sharedPreferences.getString(SETTINGS_FONT_SIZE, "30"));
+            tvDescr.setTextSize( fontSize );
+        	tvNotes.setTextSize( fontSize );
         }
 
         // Metronome visible?
