@@ -23,5 +23,9 @@
     <string name="metronome_description">Metronom am unteren Bildschirmrand anzeigen / verstecken</string>
     <string name="csv_import">CSV Import</string>
     <string name="display">Anzeige</string>
+    <string name="release_history">Versionen …</string>
+    <string name="donation">Projekt unterstützen …</string>
+    <string name="csv_field_delimiter_sum">CSV Trenzeichen zwischen Datenfeldern</string>
+    <string name="csv_field_delimiter">CSV Feld-Trennzeichen</string>
 
 </resources>

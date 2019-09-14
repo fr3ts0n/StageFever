@@ -2,6 +2,10 @@
 <resources>
 
     <string name="app_name" translatable="false">StageFever</string>
+    <string name="copyright_fr3ts0n" translatable="false">Copyright © by fr3ts0n</string>
+    <string name="url_app_mainpage" translatable="false">https://github.com/fr3ts0n/StageFever</string>
+    <string name="url_app_releases" translatable="false">https://github.com/fr3ts0n/StageFever/releases</string>
+    <string name="donation">Support project …</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Settings</string>
@@ -28,5 +32,6 @@
     <string name="display">Display</string>
     <string name="csv_field_delimiter_sum">Delimiter char between CSV fields</string>
     <string name="csv_field_delimiter">CSV field delimiter</string>
+    <string name="release_history">Release History …</string>
 
 </resources>
